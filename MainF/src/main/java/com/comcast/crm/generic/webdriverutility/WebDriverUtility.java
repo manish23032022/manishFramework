@@ -169,6 +169,12 @@ public class WebDriverUtility {
 		sel.selectByVisibleText(text);
 	}
 	
+	
+	public void selectbyvalue(WebElement element , String text) {
+		Select sel = new Select(element);
+		sel.selectByValue(text);
+	}
+	
 	/**
 	 * select the value from the dropDown based on index
 	 * @param element

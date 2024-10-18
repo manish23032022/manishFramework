@@ -21,8 +21,11 @@ import com.comcast.crm.generic.fileutility.ExcelUtility;
 import com.comcast.crm.generic.fileutility.FileUtility;
 import com.comcast.crm.generic.webdriverutility.JavaUtility;
 import com.comcast.crm.generic.webdriverutility.UtilityClassObject;
+import com.comcast.crm.generic.webdriverutility.WebDriverUtility;
 import com.comcast.crm.objectrepositoryutility.Home;
 import com.comcast.crm.objectrepositoryutility.LoginPage;
+import com.comcast.crm.objectrepositoryutilityOrg.CreateOrganization;
+import com.comcast.crm.objectrepositoryutilityOrg.Createorg_With_Type_Pom;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -34,7 +37,9 @@ public class BaseClass {
 	public JavaUtility jLib = new JavaUtility();
 	public  WebDriver driver = null;
 	public  static WebDriver sdriver = null;
-
+    public WebDriverUtility web=new WebDriverUtility();
+    public CreateOrganization createorg;
+    public Createorg_With_Type_Pom orgwithtype;
 
 	
 		@BeforeSuite(groups = {"smokeTest", "regressionTest"})
@@ -84,6 +89,8 @@ public class BaseClass {
 			String PASSWORD = System.getProperty("password" , fLib.getDataFromPropertiesFile("password"));
 			LoginPage lp = new LoginPage(driver);
 			lp.loginToapp(URL, USERNAME, PASSWORD);
+			createorg=new CreateOrganization(driver);
+			orgwithtype=new Createorg_With_Type_Pom(driver);
 		}
 	    
 	    
